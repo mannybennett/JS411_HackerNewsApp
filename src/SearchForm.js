@@ -11,35 +11,45 @@ function SearchForm() {
   };
   
   return (
-    <div>
-      <header className='header'>
-        <div>
-          
-        </div>
-        <form>
-          <input type='text' onChange={handleChange}></input>
-        </form>
-      </header>
-      <main className='container'>
-        {
-          searchData.length ? (
-            searchData.map((story, idx) => (
-              <div key={idx}>
-              <div className='cardTop'>
-                <h4>{story.title}</h4>
-                <a href={story.url} rel="noreferrer" target='_blank'>{`(${story.url})`}</a>
-              </div>
-              <div className='cardBottom'>
-                <p>{`${story.points} points`}&nbsp;|&nbsp;</p>
-                <p>{story.author}&nbsp;|&nbsp;</p>
-                <p>{`${new Date().getFullYear() - parseInt(story.created_at.slice(0, 4))} years ago`}&nbsp;|&nbsp;</p>
-                <p>{`${story.num_comments} comments`}</p>
-              </div>
+    <div className='App'>
+      <span className='SubApp'>
+        <header className='header'>
+          <div className='logo'>
+            <img alt='logo' src='https://d1sz9gun5ag95e.cloudfront.net/packs/media/images/logo-hn-search-a822432b.png'></img>
+            <div>
+              <div className='site'>Search</div>
+              <div className='site'>Hacker News</div>
             </div>
-          ))
-        ) : <></>
-        }
-      </main>
+          </div>
+          <form>
+            <input type='text' onChange={handleChange}></input>
+          </form>
+          <div>Settings</div>
+        </header>
+        <span className='filtersContainer'>
+          <div>Search</div>
+        </span>
+        <main className='container'>
+          {
+            searchData.length ? (
+              searchData.map((story, idx) => (
+                <div className='story' key={idx}>
+                  <div className='cardTop'>
+                    <p className='title'>{story.title}</p>
+                    <a className='link' href={story.url} rel="noreferrer" target='_blank'>{`(${story.url})`}</a>
+                  </div>
+                  <div className='cardBottom'>
+                    <p className='info'>{`${story.points} points`}&nbsp;|&nbsp;</p>
+                    <p className='info'>{story.author}&nbsp;|&nbsp;</p>
+                    <p className='info'>{`${new Date().getFullYear() - parseInt(story.created_at.slice(0, 4))} years ago`}&nbsp;|&nbsp;</p>
+                    <p className='info'>{`${story.num_comments} comments`}</p>
+                </div>
+              </div>
+            ))
+          ) : <></>
+          }
+        </main>
+      </span>
     </div>
   );
 }
