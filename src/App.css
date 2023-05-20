@@ -6,13 +6,14 @@
 }
 
 .App {
-  background-color: rgb(19,19,18);
   display: flex;
-  justify-content: center;
+  justify-content: center; 
+  background-color: rgb(19,19,18);
 }
 
 .SubApp {
-  width: 85%;
+  width: 83vw;
+  background-color: #F7F7EF;
 }
 
 .header {
@@ -20,6 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 6px;
 }
 
 .logo {
@@ -28,8 +30,13 @@
   max-width: 180px;
 }
 
+.site {
+  font-size: 18px;
+}
+
 img {
   width: 48px;
+  margin-right: 8px;
 }
 
 form {
@@ -47,25 +54,64 @@ input {
   color: rgba(0,0,0,.75);
 }
 
+.settings {
+  display: flex;
+  align-items: center;
+}
+
+.settings div:first-child {
+  font-size: 35px;
+  margin: 0 8px;
+}
+
 .filtersContainer {
   display: flex;
   align-items: center;
   height: 50px;
-  background-color: white;
-}
-
-main {
-  background-color: black;
+  background-color: #F7F7EF;
 }
 
 .container {
-  background-color: white;
+  background-color: #F7F7EF;
+  height: 100vh;
+}
+
+.story {
+  padding: 0 16px;
+  margin: 4px 0;
+  min-height: 40px;
+  flex-wrap: wrap;
 }
 
 .cardTop {
   display: flex;
 }
 
+.title {
+  display: flex;
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+a:link, a:visited, a:active {
+  text-decoration: none;
+  color: #838283;
+  font-size: 13px;
+  word-wrap: break-word;
+}
+
 .cardBottom {
   display: flex;
+  color: #696969;
+  font-size: 10.6667px;
+}
+
+footer {
+  background-color: rgb(19,19,18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 8px 24px;
+  font-size: 12px;
 }

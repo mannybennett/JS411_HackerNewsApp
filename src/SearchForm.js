@@ -4,9 +4,14 @@ import axios from 'axios';
 function SearchForm() {
   const [searchData, setSearchData] = useState([]);
 
+  // const fetchStories = async () => {
+  //     const initialStories = await axios.get('http://hn.algolia.com/api/v1/search?query=Technology&hitsPerPage=28');
+  //     console.log(initialStories)
+  //     setSearchData(initialStories.data.hits);
+  // };
+
   const handleChange = async (e) => {
-    const stories = await axios.get(`http://hn.algolia.com/api/v1/search?query=${e.target.value}`)
-    console.log(stories.data.hits)
+    const stories = await axios.get(`http://hn.algolia.com/api/v1/search?query=${e.target.value}&hitsPerPage=28`)
     !e.target.value.length ? setSearchData([]) : setSearchData(stories.data.hits)
   };
   
@@ -24,7 +29,10 @@ function SearchForm() {
           <form>
             <input type='text' onChange={handleChange}></input>
           </form>
-          <div>Settings</div>
+          <div className='settings'>
+            <div>⚙</div>
+            <div>Settings</div>
+          </div>
         </header>
         <span className='filtersContainer'>
           <div>Search</div>
@@ -34,8 +42,8 @@ function SearchForm() {
             searchData.length ? (
               searchData.map((story, idx) => (
                 <div className='story' key={idx}>
-                  <div className='cardTop'>
-                    <p className='title'>{story.title}</p>
+                  <div className='title'>
+                    <p>{story.title}&nbsp;</p>
                     <a className='link' href={story.url} rel="noreferrer" target='_blank'>{`(${story.url})`}</a>
                   </div>
                   <div className='cardBottom'>
@@ -49,6 +57,9 @@ function SearchForm() {
           ) : <></>
           }
         </main>
+        <footer>
+          <p>About  •  Setting  •  Help  •  API Documentation  •  Hacker News  •  Fork/Contribute  •  Cool Apps</p>
+        </footer>
       </span>
     </div>
   );
