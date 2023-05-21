@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function SearchForm() {
   const [searchData, setSearchData] = useState([]);
+  const [selectedOption, setSelectedOption] = useState('default');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // const fetchStories = async () => {
-  //     const initialStories = await axios.get('http://hn.algolia.com/api/v1/search?query=Technology&hitsPerPage=28');
-  //     console.log(initialStories)
-  //     setSearchData(initialStories.data.hits);
-  // };
+  useEffect(() => {
+    const fetchData = async () => {
+      let url = '';
 
-  const handleChange = async (e) => {
-    const stories = await axios.get(`http://hn.algolia.com/api/v1/search?query=${e.target.value}&hitsPerPage=28`)
-    !e.target.value.length ? setSearchData([]) : setSearchData(stories.data.hits)
+      if (selectedOption === 'date') {
+        url = `http://hn.algolia.com/api/v1/search_by_date?query=${searchQuery}&hitsPerPage=27`;
+      } else if (selectedOption === 'author') {
+        url = `http://hn.algolia.com/api/v1/search?tags=story,author_${searchQuery}&hitsPerPage=27`;
+      } else {
+        url = `http://hn.algolia.com/api/v1/search?query=${searchQuery}&hitsPerPage=27`;
+      }
+
+      const response = await axios.get(url);
+      setSearchData(response.data.hits);
+    };
+
+    fetchData();
+  }, [selectedOption, searchQuery]);
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleDropdownChange = (e) => {
+    setSelectedOption(e.target.value);
   };
   
   return (
@@ -27,7 +45,8 @@ function SearchForm() {
             </div>
           </div>
           <form>
-            <input type='text' onChange={handleChange}></input>
+            <div>🔍</div>
+            <input type='text' onChange={handleInputChange} placeholder="Search stories by title, url, or author"></input>
           </form>
           <div className='settings'>
             <div>⚙</div>
@@ -35,7 +54,12 @@ function SearchForm() {
           </div>
         </header>
         <span className='filtersContainer'>
-          <div>Search</div>
+          <p>Search Stories by &nbsp;</p>
+          <select id="dropdown" value={selectedOption} onChange={handleDropdownChange}>
+            <option value="default">Default</option>
+            <option value="date">Date</option>
+            <option value="author">Author</option>
+          </select>
         </span>
         <main className='container'>
           {
@@ -43,7 +67,7 @@ function SearchForm() {
               searchData.map((story, idx) => (
                 <div className='story' key={idx}>
                   <div className='title'>
-                    <p>{story.title}&nbsp;</p>
+                    <a className='storyLink' href={story.url} rel="noreferrer" target='_blank'>{story.title}&nbsp;</a>
                     <a className='link' href={story.url} rel="noreferrer" target='_blank'>{`(${story.url})`}</a>
                   </div>
                   <div className='cardBottom'>

@@ -41,6 +41,15 @@ img {
 
 form {
   width: calc(100% - 324px);
+  display: flex;
+  align-items: center;
+  height: 42px;
+  background-color: white;
+}
+
+form > div {
+  font-size: 24px;
+  margin-left: 6px;
 }
 
 input {
@@ -49,9 +58,15 @@ input {
   height: 42px;
   width: 100%;
   box-shadow: none;
-  padding: 16px 144px 16px 54px;
+  padding: 16px 144px 16px 8px;
   font-weight: 300;
   color: rgba(0,0,0,.75);
+  font-size: 100%;
+    line-height: 1.15;
+}
+
+input:focus {
+  outline: none;
 }
 
 .settings {
@@ -69,7 +84,25 @@ input {
   align-items: center;
   height: 50px;
   background-color: #F7F7EF;
+  padding: 0 8px;
 }
+
+.filtersContainer > p {
+  font-size: 12px;
+}
+
+select {
+  border: 1px solid #c8c8c8;
+  color: #838283;
+  border-radius: 2px;
+  padding: 4px;
+  outline: none;
+}
+
+select:focus {
+  box-shadow: none; /* Remove focus box shadow */
+}
+
 
 .container {
   background-color: #F7F7EF;
@@ -90,15 +123,20 @@ input {
 .title {
   display: flex;
   width: 100%;
-  font-size: 14px;
   margin-bottom: 4px;
 }
 
-a:link, a:visited, a:active {
+.storyLink:link, .storyLink:visited, .storyLink:active {
+  font-size: 14px;
+  color: black;
   text-decoration: none;
+}
+
+.link:link, .link:visited, .link:active {
   color: #838283;
   font-size: 13px;
   word-wrap: break-word;
+  text-decoration: none;
 }
 
 .cardBottom {
