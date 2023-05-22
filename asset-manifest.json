@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/JS411_HackerNewsApp/static/css/main.cc62cef0.css",
-    "main.js": "/JS411_HackerNewsApp/static/js/main.64021798.js",
+    "main.css": "/JS411_HackerNewsApp/static/css/main.ad0a42e8.css",
+    "main.js": "/JS411_HackerNewsApp/static/js/main.23139c99.js",
     "static/js/787.825e794e.chunk.js": "/JS411_HackerNewsApp/static/js/787.825e794e.chunk.js",
     "index.html": "/JS411_HackerNewsApp/index.html",
-    "main.cc62cef0.css.map": "/JS411_HackerNewsApp/static/css/main.cc62cef0.css.map",
-    "main.64021798.js.map": "/JS411_HackerNewsApp/static/js/main.64021798.js.map",
+    "main.ad0a42e8.css.map": "/JS411_HackerNewsApp/static/css/main.ad0a42e8.css.map",
+    "main.23139c99.js.map": "/JS411_HackerNewsApp/static/js/main.23139c99.js.map",
     "787.825e794e.chunk.js.map": "/JS411_HackerNewsApp/static/js/787.825e794e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cc62cef0.css",
-    "static/js/main.64021798.js"
+    "static/css/main.ad0a42e8.css",
+    "static/js/main.23139c99.js"
   ]
 }
