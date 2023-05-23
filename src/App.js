@@ -14,11 +14,11 @@ function App() {
       let url = '';
 
       if (selectedOption === 'date') {
-        url = `http://hn.algolia.com/api/v1/search_by_date?query=${searchQuery}&hitsPerPage=27`;
+        url = `https://hn.algolia.com/api/v1/search_by_date?query=${searchQuery}&hitsPerPage=27`;
       } else if (selectedOption === 'author') {
-        url = `http://hn.algolia.com/api/v1/search?tags=story,author_${searchQuery}&hitsPerPage=27`;
+        url = `https://hn.algolia.com/api/v1/search?tags=story,author_${searchQuery}&hitsPerPage=27`;
       } else {
-        url = `http://hn.algolia.com/api/v1/search?query=${searchQuery}&hitsPerPage=27`;
+        url = `https://hn.algolia.com/api/v1/search?query=${searchQuery}&hitsPerPage=27`;
       }
 
       const response = await axios.get(url);
